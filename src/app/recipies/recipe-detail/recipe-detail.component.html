@@ -1,0 +1,40 @@
+<div *ngIf="!recipe">No Item Selected</div>
+<div *ngIf="recipe">
+    <div class="row">
+        <div class="col-xs-12">
+            <img [src]="recipe.imagePath" alt="image" class="img-responsive" style="height: 200px;" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>{{recipe.name}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="btn-group" appDropdown>
+                <button class="btn btn-primary dropdown-toggle">
+                    Manage Recipe <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a (click)="moveToIngredients()" style="cursor: pointer;">Move to Ingredients</a></li>
+                    <li><a style="cursor: pointer;">Edit Recipe</a></li>
+                    <li><a style="cursor: pointer;">Delete Recipe</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            {{recipe.description}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <ul class="list-group">
+                <li class="list-group-item" *ngFor="let item of recipe.ingredients" style="cursor: pointer;">
+                    {{item.name}}({{item.amount}})</li>
+            </ul>
+        </div>
+    </div>
+</div>

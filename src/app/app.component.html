@@ -1,1 +1,7 @@
-<h1>Hello Angular!!!!</h1>
+<app-header (featureChange)="onFeatureChange($event)"></app-header>
+<div class="container">
+    <div class="row">
+        <app-recipies *ngIf="currentFeature==='recipe'"></app-recipies>
+        <app-shopping-list *ngIf="currentFeature!=='recipe'"></app-shopping-list>
+    </div>
+</div>
