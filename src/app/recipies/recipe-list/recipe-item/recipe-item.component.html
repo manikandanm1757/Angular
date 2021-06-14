@@ -1,0 +1,17 @@
+<a href="#" class="list-group-item clearfix" (click)="onItemClick()" [ngClass]="{active: recipe === selectedItem}">
+    <div class="pull-left">
+        <h4 class="list-group-item-heading">
+            {{ recipe.name }}
+        </h4>
+        <p class="list-group-item-text">
+            {{recipe.description}}
+        </p>
+    </div>
+    <div class="pull-right">
+        <img
+            class="img-responsive"
+            [src]="recipe.imagePath"
+            style="max-height:80px;"
+        />
+    </div>
+</a>
