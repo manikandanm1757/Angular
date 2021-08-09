@@ -1,4 +1,4 @@
-<a href="#" class="list-group-item clearfix" (click)="onItemClick()" [ngClass]="{active: recipe === selectedItem}">
+<a [routerLink]="'/recipes/' + id" class="list-group-item clearfix" routerLinkActive="active" [ngClass]="{active: recipe === selectedItem}">
     <div class="pull-left">
         <h4 class="list-group-item-heading">
             {{ recipe.name }}

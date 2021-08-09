@@ -1,7 +1,6 @@
-<app-header (featureChange)="onFeatureChange($event)"></app-header>
+<app-header></app-header>
 <div class="container">
     <div class="row">
-        <app-recipies *ngIf="currentFeature==='recipe'"></app-recipies>
-        <app-shopping-list *ngIf="currentFeature!=='recipe'"></app-shopping-list>
+        <router-outlet></router-outlet>
     </div>
 </div>

@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-xs-12">
+        <form (ngSubmit)="onSubmit()" [formGroup]="recipeForm">
+            <div class="form-group">
+                <button class="btn btn-success" style="margin-right: 10px;" type="submit"
+                    [disabled]="!recipeForm.valid">Save</button>
+                <button class="btn btn-danger" style="margin-right: 10px;" type="button" [disabled]="!editMode"
+                (click)="onDelete()">Delete</button>
+                <button class="btn btn-primary" style="margin-right: 10px;" type="button" (click)="onCancel()">Cancel</button>
+            </div>
+            <hr />
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" formControlName="name" />
+            </div>
+            <div class="form-group">
+                <label>Image Path</label>
+                <input type="text" class="form-control" formControlName="imagePath" />
+            </div>
+            <div class="form-group">
+                <img [src]="recipeForm.get('imagePath')?.value" class="img-responsive" />
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control" formControlName="description"></textarea>
+            </div>
+            <div class="form-group" formArrayName="ingredients">
+                <div *ngFor="let control of getIngControls();let x=index;" [formGroupName]="x">
+                    <div class="form-group col-xs-6">
+                        <input class="form-control" formControlName="name" />
+                    </div>
+                    <div class="form-group  col-xs-3">
+                        <input class="form-control" type="number" formControlName="amount" />
+                    </div>
+                    <div class="form-group  col-xs-2">
+                        <button class="btn btn-danger" type="button" (click)="onIngredientDelete(x)">X</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="button" (click)="onIngredientAdd()">Add</button>
+            </div>
+        </form>
+    </div>
+</div>

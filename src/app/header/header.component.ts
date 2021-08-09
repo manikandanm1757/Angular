@@ -6,9 +6,4 @@ import { Component, EventEmitter, Output } from '@angular/core';
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-    @Output() featureChange = new EventEmitter<string>();
-    selectFeature(feature: string) {
-        debugger
-        this.featureChange.emit(feature);
-    }
 }

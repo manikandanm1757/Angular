@@ -1,19 +1,22 @@
 <div class="row">
     <div class="col-xs-12">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" name="name" class="form-control" #name />
-        </div>
-        <div class="form-group">
-            <label>Amount</label>
-            <input type="number" name="amount" class="form-control" #amount />
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-xs-12 form-group">
-        <button class="btn btn-success" style="margin-right: 20px;" (click)="onAdd()">Add</button>
-        <button class="btn btn-danger" style="margin-right: 20px;" (click)="onDelete()">Delete</button>
-        <button class="btn btn-primary" style="margin-right: 20px;" (click)="onClear()">Clear</button>
+        <form #form="ngForm">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" class="form-control" ngModel required #name="ngModel"/>
+                <p *ngIf="!name.valid && name.touched">Please enter the Name!</p>
+            </div>
+            <div class="form-group">
+                <label>Amount</label>
+                <input type="number" name="amount" class="form-control" [ngModel]="1" required min="1" />
+            </div>
+            <div class="form-group">
+                <button type="submit" [disabled]="!form.valid" class="btn btn-success" style="margin-right: 20px;"
+                    (click)="onAdd()">{{editMode ? 'Update': 'Add'}}</button>
+                <button type="button" [disabled]="!editMode" class="btn btn-danger" style="margin-right: 20px;"
+                    (click)="onDelete()">Delete</button>
+                <button type="button" class="btn btn-primary" style="margin-right: 20px;" (click)="onClear()">Clear</button>
+            </div>
+        </form>
     </div>
 </div>
